@@ -140,6 +140,10 @@ start_proxy (int n_args, const char *args[])
       n++;
     }
 
+  flatpak_proxy_add_policy (proxy,
+                            "org.freedesktop.portal.IBus",
+                            FLATPAK_POLICY_OWN);
+
   if (!flatpak_proxy_start (proxy, &error))
     {
       g_printerr ("Failed to start proxy for %s: %s\n", bus_address, error->message);
